@@ -3,6 +3,8 @@
 # Created by Storm Lomax
 # Created on 24/04/2025
 
+import random
+
 inventory = []
 
 # The game intro
@@ -549,13 +551,149 @@ def demigod():
         if end == 'no':
             return
 
-# Cooking pot room                   
+# Statue room - cooking pot - part 1                
 def room10():
-    print("This room is currently under construction.")
-    return
+    print("Bronze statues line the walls of this long corridor.")
+    print("This was a room painted in gold long ago, but has now been stripped of anything of value.")
+    print("All that's left are the bare statues. You go up to the first one.")
+    print("It depicts a musician, holding his guitar at a jaunty angle and mouth open in song.")
+    print("The other statues are similar, each depicting the same person - reading, running, fighting, even cooking.")
+    print("And there it is - the statue you need.")
+    print("Sitting about halfway down the corridor is a depiction of a camp fire, a huge cooking pot over the flames and the statue hunched over, fingers pinched as though seasoning the dish.")
+    print("Bingo.")
+    statue = get_valid_input("Do you want to try and take the cooking pot? (yes/no)", ['yes', 'no'])
+    if statue == 'yes':
+        print("You take a firm grip of the cooking pot, and pull hard.")
+        print("It refuses to budge.")
+        print("You decide to look around for something to pry it off.")
+        room10again()
+    if statue == 'no':
+        print("You decide to look around first.")
+        room10again()
+  
+# Statue room - cooking pot - part 2        
+def room10():
+    print("After investigating the rest of the room, you find a small button hidden behind one of the statues.")
+    print("You press it.")
+    print("With a small click, the wall behind the statue opens to reveal a small, tight tunnel.")
+    print("It's too gloomy to see anything.")
+    tunnel = get_valid_input("Do you go in? (yes/no)", ['yes', 'no'])
+    if tunnel == 'no':
+        print("You kick a stray pebble down the tunnel to make sure it's safe.")
+        print("Nothing happens.")
+        tunnel()
+    if tunnel == 'yes':
+        tunnel()
+        
+ # Tunnel and demon room       
+def tunnel():
+    print("It's probably safe, so you decide to crawl in.")
+    print("You crawl for a few minutes, sides pressing in around you.")
+    print("It's too tight to turn back so you press on, seeing some light up ahead.")
+    print("You eventually emerge into a crimson room. Unease settles over you immediately.")
+    print("On one side of the room sits a red demon, with shiny black horns and sharp teeth.")
+    print("In the middle of the room is a lone dice.")
+    print("You think about drawing your sword, but the demon smiles at you.")
+    print("'Welcome to my room,' he says. 'Not many people find me here. Well done.'")
+    print("'What do you want?' you ask quickly, wary about trading too many words with a demon.")
+    print("He gestures at the dice.")
+    print("'Roll,' he says.")
+    print("'What happens if I do?' you reply.")
+    print("'The number on the dice determines your challenge,' he says smoothly. 'Win and I will grant you a boon.'")
+    print("'And if I lose?'")
+    print("The demon says nothing, only smiles wider.")
+    print("With a fortifying breath, you pick up the dice, and roll.")
+    
+# Dice roll
+    dice_roll = random.randint(1, 6)  # Generate a random number between 1 and 6
+    print(f"You rolled a {dice_roll}!")
+    
+# Outcome from dice roll - 5&6
+    if dice_roll >= 5:
+        print("The demon claps his hands gleefully. That can't be good.")
+        print("'One of my favourites,' he says. 'A riddle.'")
+        print("'Great.'")
+        print("The demon clears his throat dramatically.")
+        print("'I cure the weak, yet cause the ill. You may handle me with skill. As darkness closes, I draw near, and yet this rarely causes fear.' The demon grins. 'What am I?'")
+        riddle = input("What do you answer? ")
+        if riddle == 'food':
+            win.dice()
+        else:
+            lose.dice()
+    elif dice_roll == 3 or dice_roll == 4:
+        print("'Oh, interesting,' the demon purrs, setting your hair on edge.")
+        print("'What does it mean?' you ask.")
+        print("'It's not my favourite, but it'll do,' he replies, before snapping his fingers.")
+        print("The dice is replaced with a large, grand piano. Having never played any kind of music before, you shit yourself a little.")
+        print("'The instructions are simple,' the demon says.")
+        print("You doubt that.")
+        print("'Play dead!' he declares loudly, before sitting back and watching.")
+        print("You look down at the piano. It looks like any regulat piano, except the keys are marked with their piano notes.")
+        key1 = input("What note do you play first? ")
+        if key1 == 'd':
+            print("The demon narrows his eyes slightly but says nothing.")
+            key2 = input("What note do you play second? ")
+            if key2 == 'e':
+                print("The demon frowns, but stays where he is.")
+                key3 = input("What note do you play third? ")
+                if key3 == 'a':
+                    print("The demon looks thoroughly annoyed. He says nothing.")
+                    key4 - input("What note do you play third? ")
+                    if key4 == 'd':
+                        win.dice()
+                    else:
+                        lose.dice()
+                else:
+                    lose.dice()
+            else:
+                lose.dice()
+        else:
+            lose.dice()  
+
+
+# When the user gets the answer wrong
+def lose.dice():
+    print("'Wrong!' the demon exclaims with glee. 'What a fool you are! What an utter buffoon! The world weeps at your stupidity.'")
+        print("'Right okay, that's a bit much,' you say with a frown. 'Can I do another challenge?'")
+        print("The demon scoffs.")
+        print("'Again with the stupidity,' he says. 'Obviously not. There would be no stakes then, would there?'")
+        print("'What now then?'")
+        print("The demon snaps his fingers and turns you into a plate of cannolis. Dead cannolis.")
+        end = get_valid_input("Do you want to try this room again? (yes/no): ", ['yes', 'no'])
+        if end == 'yes':
+            tunnel()
+        if end == 'no':
+            return
+
             
-            
-            
+# When the user wins the dice challenge           
+def win.dice():
+    print("The demon frowns.")
+            print("'You got that too easily,' he says.")
+            print("'It wasn't hard,' you say with a shrug, and he looks like he might rip your head off.")
+            print("With a tight smile, the demon clicks his fingers. A door appears beside him.")
+            print("'There. That will lead to the dungeon boss's room. That's what you want, isn't it? Now begone.'")
+            print("'Um, no?' You put your hands on your hips. 'You said you'd gift me a boon. Now boon me.'")
+            print("'Ugh. Fine.' The demon rolls his eyes. 'What do you want, you food-obsessed little troglodyte?'")
+            print("'I want the cooking pot on the statue.'")
+            print("'Of course you do.' The demon snaps his fingers again, and the cooking pot appears. 'There, take it and get out of my sight.'")
+            print("'Gladly.' You put the cooking pot in your backpack.")
+            global inventory
+            inventory.append("cooking pot")
+            print("You have collected a cooking pot!")
+            print(f"Your inventory now contains: {', '.join(inventory)}")
+            print("You now have all the items to cook the dungeon boss!")
+            cont = get_valid_input("Do you want to continue? (yes/no) ", ['yes', 'no'])
+            if cont == 'no':
+                    exit = get_valid_input("Are you sure you want to quit the game?")
+                    if exit == 'yes':
+                        return
+                    if exit == 'no':
+                        print("You leave the room, victorious, into the dungeon boss's chambers.")
+                        bossroom()  
+                if cont == 'yes':
+                    print("You leave the room, victorious, into the dungeon boss's chambers.") 
+                    bossroom()
        
         
 # Lets players play again from the beginning   
