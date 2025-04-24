@@ -374,6 +374,7 @@ def petrock():
         print("You head back to Dwayne's room.")
         dwaynereturn()
 
+# Returning pet rock - getting rock salt and silver key
 def dwaynereturn():
     print("Dwayne is overjoyed when he sees his pet rock.")
     print("The pet rock is also, somehow, very excited.")
@@ -455,15 +456,8 @@ def room8():
                 if cont == 'yes':
                     print("You continue on.") 
                     room9()
-                    
-# The shrine room - recipe card 2
-def room9():
-    print("This room is currently under construction")
-    return
-                
-                
-            
-        
+
+# When trying to steal the mushrooms
 def cooked():
     print("You snatch the basket of mushrooms and try to make a break for it.")
     print("In a room full of rock monsters, you obviously don't get very far.")
@@ -482,6 +476,15 @@ def cooked():
         room8()
     if end == 'no':
         return 
+
+                   
+# The shrine room - recipe card 2
+def room9():
+    print("This room is currently under construction")
+    return
+                
+                
+            
        
         
 # Lets players play again from the beginning   
