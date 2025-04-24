@@ -387,6 +387,7 @@ def dwaynereturn():
     print("He roots around in his inventory for a while before pulling out a large cooking pot and a small silver key.")
     print("'You can have these,' he says. 'The key will lead to the kitchens, where I used to work. Don't tell anyone I stole a pot.")
     print("You pocket the items.")
+    global inventory
     inventory.append("rock salt")
     inventory.append("silver key")
     print("You have collected rock salt!")
@@ -478,12 +479,82 @@ def cooked():
         return 
 
                    
-# The shrine room - recipe card 2
+# The shrine room - donate gold
 def room9():
-    print("This room is currently under construction")
+    print("You enter a shrine room.")
+    print("It's quiet, almost eerily so, with only the light of the candles on the shrine.")
+    print("The door on the other side has a strange symbol carved into it. The same symbol on the shrine.")
+    shrine = get_valid_input("Do you approach the shrine or try the door? (shrine/door)", ['shrine', 'door'])
+    if shrine == 'door':
+        print("You decide to bypass the shrine and just walk through the door.")
+        demigod()
+    if shrine == 'shrine':
+        print("You approach the shrine.")
+        print("Now that you have a closer look, you can see the symbol is of a brutal demi-god.")
+        print("It's known for its ruthless nature, coupled with a love of gold.")
+        donate = get_valid_input("Do you want to donate to the shrine? (yes/no)", ['yes', 'no'])
+        if donate == 'no':
+            print("You decide not to donate to the shrine.")
+            print("You bypass it and go for the door.")
+            demigod()
+        if donate == 'yes':
+            print("You decide it's probably in your best interest to donate something.")
+            print("You take out the gold coins you found earlier and place them on the shrine.")
+            global inventory
+            if "gold coins" in inventory:
+                inventory.remove("gold coins")
+            print("You have given away your gold coins.")
+            print(f"Your inventory now contains: {', '.join(inventory)}")
+            print("Donation complete, you cross the room and open the door.")
+            print("As suspected, on the other side sits the demi-god.")
+            print("It stares at you, a cluster of tentacles, eyeballs, and hate.")
+            print("But as you inch across the room, it doesn't touch you.")
+            print("And then something catches your eye.")
+            print("Underneath one of the slimy tentacles, a piece of parchment is stuck.")
+            print("Keeping one eye on the demi-god, you slowly make your way over and slide it out.")
+            print("It's covered in thick slime, but it's still legible.")
+            print("It's recipe card part 2!")
+            print("'Can I have this?' you ask the demi-god. You figure it's better to ask first.")
+            print("The demi-god looks at you for a long time. At least, you think it does. A lot of its eyeballs are pointing in different directions.")
+            print("'Not stingy,' the demi-god eventually rumbles. 'Can have.'")
+            print("'Thanks.'")
+            print("You hurriedly stuff it in your pockets, slime be damned.")
+            global inventory
+            inventory.append("recipe card part 2")
+            print("You have collected recipe card part 2!")
+            print(f"Your inventory now contains: {', '.join(inventory)}")
+            cont = get_valid_input("Do you want to continue? (yes/no)", ['yes', 'no'])
+            if cont == 'no':
+                    exit = get_valid_input("Are you sure you want to quit the game?")
+                    if exit == 'yes':
+                        return
+                    if exit == 'no':
+                        print("You continue on.")
+                        room10()  
+                if cont == 'yes':
+                    print("You continue on.") 
+                    room10()
+
+# What happens if the player doesn't donate to the shrine            
+def demigod():
+    print("As soon as you open it, you realise what the symbol on the door was.")
+        print("An monstrous demi-god sits on the other side of the door, a cluster of tentacles, eyeballs, and hate.")
+        print("'Stingy!!' it screams at you.")
+        print("Uh oh. Maybe you shouldn't have skipped the shrine.")
+        print("The demi-god wraps its gross tentacles around you and squeezes you like an anaconda.")
+        print("You pop into jelly. Dead jelly.")
+        end = get_valid_input("Do you want to try this room again? (yes/no)", ['yes', 'no'])
+        if end == 'yes':
+            room8()
+        if end == 'no':
+            return
+
+# Cooking pot room                   
+def room10():
+    print("This room is currently under construction.")
     return
-                
-                
+            
+            
             
        
         
