@@ -3,8 +3,10 @@
 # Created by Storm Lomax
 # Created on 24/04/2025
 
+# For the dice roll and cool lines
 import random
 
+# For the player inventory
 inventory = []
 
 # The game intro
@@ -20,6 +22,7 @@ def intro():
         if name == 'no':
             break
 
+
 # Start screen
 def begin():
     button = get_valid_input("Type 'start' to begin your adventure: ", ['start'])
@@ -28,6 +31,7 @@ def begin():
     else:
         print("Invalid input. Please type 'start'.")
         begin()
+
 
 # Game intructions
 def entry():
@@ -49,6 +53,7 @@ def entry():
     if start == 'no':
         return
 
+
 # Entry room
 def entryroom():
     print("There are two doors leading into the dungeon.")
@@ -58,7 +63,8 @@ def entryroom():
     if door == 'right':
         print("You walk through the door to your right.")
         room2() 
-  
+ 
+ 
 # Pit room      
 def room1():
         print("You stride confidently through the left door, and straight into a pit.")
@@ -70,6 +76,7 @@ def room1():
             entryroom()
         if pit == 'no':
             return
+
 
 # Chest monster room   
 def room2():
@@ -95,8 +102,7 @@ def room2():
         print("You scream and bolt for the door, slamming it behind you as the monster wails with disappointment.")
         print("Phew. That was close.")
         room3()
-                      
-             
+                                   
 
 # Rock salt room
 def room3():  
@@ -122,6 +128,7 @@ def room3():
     if rock == 'talk':
         print("You introduce yourself to the rock creature.")
         print("'I'm Dwayne,' he replies miserably.")
+        print("'I'm " + player +"', you tell him.")
         ask = get_valid_input("Do you want to ask what's wrong? (yes/no)", ['yes', 'no'])
         if ask == 'no':
             print("Don't be a dick.")
@@ -143,6 +150,7 @@ def room3():
             print("Dwayne only nods sadly.")
             print("It's time to move onto the next room.")
             room4()
+
 
 # Slime room          
 def room4():
@@ -181,6 +189,7 @@ def room4():
         print(f"Your inventory now contains: {', '.join(inventory)}")
         print("You proceed to the next room.")
         room5()
+
 
 # Recipe part 1 room       
 def room5():
@@ -221,6 +230,7 @@ def room5():
         print("You decide not to think about how close to came to being cursed, and quickly cross over to the next room.")
         room6()
 
+
 # Romance book room - puzzle/trap room      
 def room6():
     print("This is clearly a trap room.")
@@ -258,6 +268,7 @@ def room6():
         if proceed == 'yes':
             print("You head back to the library.")
             room5again()      
+
         
 # Picking the wrong path in room6
 def riddle():
@@ -271,6 +282,7 @@ def riddle():
             room6()
         if end == 'no':
             return   
+
 
 # Room5 - returning the romance book
 def room5again():
@@ -300,6 +312,7 @@ def room5again():
     if cont == 'yes':
         print("You proceed to the next room.")
         room7()
+
         
 # The memory room - rock pet
 def room7():
@@ -340,6 +353,7 @@ def room7():
                 petrock()
             if rustle == 'yes':
                 petrock()
+
                 
 # When the player gets the memories wrong in room7
 def memorymonster():
@@ -356,6 +370,7 @@ def memorymonster():
         room7()
     if end == 'no':
         return 
+
                     
 # Investigating the pet rock noise
 def petrock():
@@ -375,6 +390,7 @@ def petrock():
     if dwayne == 'yes':
         print("You head back to Dwayne's room.")
         dwaynereturn()
+
 
 # Returning pet rock - getting rock salt and silver key
 def dwaynereturn():
@@ -407,11 +423,13 @@ def dwaynereturn():
         print("You continue on.") 
         betweenroom() 
 
+
 # Unlocking the memory room to the kitchens
 def betweenroom():
     print("You make it back to the memory monster room, and it's still safely dead.")
     print("You use the silver key to unlock the door on the other side.")
     room8()
+
 
 # The kitchens - blue mushroom   
 def room8():
@@ -459,6 +477,7 @@ def room8():
                 if cont == 'yes':
                     print("You continue on.") 
                     room9()
+
 
 # When trying to steal the mushrooms
 def cooked():
@@ -536,6 +555,7 @@ def room9():
                 print("You continue on.") 
                 room10()
 
+
 # What happens if the player doesn't donate to the shrine            
 def demigod():
     print("As soon as you open it, you realise what the symbol on the door was.")
@@ -549,6 +569,7 @@ def demigod():
         room8()
     if end == 'no':
         return
+
 
 # Statue room - cooking pot - part 1                
 def room10():
@@ -569,6 +590,7 @@ def room10():
     if statue == 'no':
         print("You decide to look around first.")
         room10again()
+
   
 # Statue room - cooking pot - part 2        
 def room10again():
@@ -583,8 +605,9 @@ def room10again():
         tunnel()
     if tunnel == 'yes':
         tunnel()
-        
- # Tunnel and demon room       
+
+       
+# Tunnel and demon room       
 def tunnel():
     print("It's probably safe, so you decide to crawl in.")
     print("You crawl for a few minutes, sides pressing in around you.")
@@ -602,19 +625,21 @@ def tunnel():
     print("'And if I lose?'")
     print("The demon says nothing, only smiles wider.")
     print("With a fortifying breath, you pick up the dice, and roll.")
+
     
-# Dice roll
-    dice_roll = random.randint(1, 6)  # Generate a random number between 1 and 6
+# Dice roll - generate a random number between 1 and 6
+    dice_roll = random.randint(1, 6)
     print(f"You rolled a {dice_roll}!")
+ 
     
-# Outcome from dice roll - 5&6
+# Outcome from dice roll
     if dice_roll >= 5:
         print("The demon claps his hands gleefully. That can't be good.")
         print("'One of my favourites,' he says. 'A riddle.'")
         print("'Great.'")
         print("The demon clears his throat dramatically.")
         print("'I cure the weak, yet cause the ill. You may handle me with skill. As darkness closes, I draw near, and yet this rarely causes fear.' The demon grins. 'What am I?'")
-        riddle = input("What do you answer? ")
+        riddle = input("What do you answer? ") #put in condition so any version of food will be correct
         if riddle == 'food':
             windice()
         else:
@@ -691,16 +716,100 @@ def windice():
     print("You now have all the items to cook the dungeon boss!")
     cont = get_valid_input("Do you want to continue? (yes/no) ", ['yes', 'no'])
     if cont == 'no':
-        exit = get_valid_input("Are you sure you want to quit the game?")
+        exit = get_valid_input("Are you sure you want to quit the game?", ['yes', 'no'])
         if exit == 'yes':
             return
         if exit == 'no':
             print("You leave the room, victorious, into the dungeon boss's chambers.")
-            bossroom()  
+            bossroomintro()  
     if cont == 'yes':
         print("You leave the room, victorious, into the dungeon boss's chambers.") 
-        bossroom()
+        bossroomintro()
+
+
+# Bossroom Intro
+def bossroomintro():
+    print("The gloom of the boss room envelops you in darkness.")
+    print("From the echo of your boots, you can tell how big and cavernous the room is.")
+    print("You take another step forward, and hear a sickening crunch.")
+    print("Looking down, you see yourself standing on the bones of prior dungeon crawlers.")
+    print("A shiver goes down your spine.")
+    print("They're too old and dry to even make bone broth with them. Ugh.")
+    print("Somewhere in the darkness, you hear the ominous squawk of the dungeon boss.")
+    print("With thunderous footsteps, it steps out of the darkness. You ready yourself.")
+    print("The body of a cow, the legs of a boar, and the head of a chicken.")
+    print("You lick your lips.")
+    print("The dungeon boss is here.")
+    bossfight()
+
+    
+# Boss fight - start
+def bossfight():
+    print("The chicken head clucks in rage and darts forward, aiming to skewer you on its beak.")
+    fight1 get_valid_input = ("What do you do? (attack/duck)", ['attack', 'duck'])
+    if fight1 = 'duck':
+        print("You duck to the side, rolling expertly back onto your feet and swiping with your trusty sword.")
+        attack1()
+    if fight1 = 'attack':
+        print("You swipe out with your trusty sword.")
+        attack1()
+
+
+# Boss fight - first attack
+def attack1():
+    print("Like you have done before with many dungeon bosses, the blade of your sword catches the chicken head by the throat, spurting blood across the ground.")
+    print("The boss screams in anger.")
+    print("'Buh buh BU GAW!!'")  
+    print("The strike wasn't quite enough to kill it, and it lunges for you again.")
+    fight2 = get_valid_input = ("How do you attack? (left/right)", ['left', 'right'])
+    if fight2 == 'left':
+        print("You feint to your right before swinging left.")
+        attack2()
+    if fight2 == 'right':
+        print("You feint to your left before swinging right.")
+        attack2()
+
        
+# Boss fight - second attack
+def attack2():
+    print("You strike a devastating blow across the beak.")
+    print("The boss falls back, stunned.")
+    fight3 = get_valid_input("Do you strike the final blow, or say a cool line first? (strike/cool line)", ['strike', 'cool line'])
+    if fight3 == 'strike':
+        attack3()
+    if fight3 == 'cool line':
+        coolline()
+
+
+# Boss fight - randomly chosen cool lines
+def coolline():
+    cool_lines = [
+        "Looks like you're all out of cluck."
+        "Time to cross the road."
+        "The egg came first... but today is your last."
+        "No more fowl play, foul beast."
+        "You brought a beak to a sword fight"
+        "This is the end of the pecking order."
+        "Your goose is cooked... and so are you."
+    ]
+    chosen_line = random.choice(cool_lines)
+    print(f"'{chosen_line}'")
+    attack3()
+
+
+# Boss fight - final attack    
+def attack3():
+    print("You thrust your sword through the creature's throat, and it falls down limp.")
+    print("The chamber goes silent.")
+    print("You did it.")
+    print("You defeated the boss.")
+    print("And now...")
+    bossmeal()
+
+# Cooking the boss    
+def bossmeal():
+
+
         
 # Lets players play again from the beginning   
 def play_game():
@@ -710,6 +819,7 @@ def play_game():
         if again != 'yes':
             break  
 
+
 #  Lets players enter a choice again if they enter a spelling mistake, etc.
 def get_valid_input(prompt, valid_options):
     while True:
@@ -717,6 +827,7 @@ def get_valid_input(prompt, valid_options):
         if user_input in valid_options:
             return user_input
         print(f"Invalid choice. Please choose from {', '.join(valid_options)}.")    
+
 
 # Start the game
 play_game()
