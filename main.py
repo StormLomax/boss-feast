@@ -3,11 +3,14 @@
 # Created by Storm Lomax
 # Created on 24/04/2025
 
-# For the dice roll and cool lines
-import random
+
+import random # For the dice roll and cool lines
+import difflib # Checks similarities of entered words
+
 
 # For the player inventory
 inventory = []
+
 
 # The game intro
 def intro():
@@ -633,18 +636,18 @@ def tunnel():
  
     
 # Outcome from dice roll
-    if dice_roll >= 5:
+    if dice_roll >= 4:
         print("The demon claps his hands gleefully. That can't be good.")
         print("'One of my favourites,' he says. 'A riddle.'")
         print("'Great.'")
         print("The demon clears his throat dramatically.")
         print("'I cure the weak, yet cause the ill. You may handle me with skill. As darkness closes, I draw near, and yet this rarely causes fear.' The demon grins. 'What am I?'")
-        riddle = input("What do you answer? ") #put in condition so any version of food will be correct
-        if riddle == 'food':
+        riddle = input("What do you answer? ")
+        if difflib.SequenceMatcher(None, riddle.lower(), "food").ratio() >= 0.8:
             windice()
         else:
             losedice()
-    elif dice_roll == 3 or dice_roll == 4:
+    elif dice_roll <= 3:
         print("'Oh, interesting,' the demon purrs, setting your hair on edge.")
         print("'What does it mean?' you ask.")
         print("'It's not my favourite, but it'll do,' he replies, before snapping his fingers.")
@@ -652,21 +655,21 @@ def tunnel():
         print("'The instructions are simple,' the demon says.")
         print("You doubt that.")
         print("'Play dead!' he declares loudly, before sitting back and watching.")
-        print("You look down at the piano. It looks like any regulat piano, except the keys are marked with their piano notes.")
+        print("You look down at the piano. It looks like any regular piano, except the keys are marked with their piano notes.")
         decision = get_valid_input("Do you try to play the piano, or pretend to be dead? (piano/dead)", ['piano', 'dead'])
         if decision == 'dead':
             losedice()
         if decision == 'piano':
-            key1 = input("What note do you play first? ")
+            key1 = input("What note do you play first? ").strip().lower() # Let's lower or upper case be accepted, and strips any whitespace
             if key1 == 'd':
                 print("The demon narrows his eyes slightly but says nothing.")
-                key2 = input("What note do you play second? ")
+                key2 = input("What note do you play second? ").strip().lower()
                 if key2 == 'e':
                     print("The demon frowns, but stays where he is.")
-                    key3 = input("What note do you play third? ")
+                    key3 = input("What note do you play third? ").strip().lower()
                     if key3 == 'a':
                         print("The demon looks thoroughly annoyed. He says nothing.")
-                        key4 = input("What note do you play fourth? ")
+                        key4 = input("What note do you play fourth? ").strip().lower()
                         if key4 == 'd':
                             windice()
                         else:
@@ -677,9 +680,6 @@ def tunnel():
                     losedice()
             else:
                 losedice()  
-    else:
-        print
-        #Add in the third puzzle here
 
 
 # When the user gets the answer wrong
@@ -808,7 +808,25 @@ def attack3():
 
 # Cooking the boss    
 def bossmeal():
-
+    print("Several hours later.")
+    print("The dungeon boss has been chopped into into its best parts.")
+    print("You're sitting at a campfire in the boss's room, the cooking pot over the flames.")
+    print("The rock creatures from the kitchen have joined you, after you insisted on cooking it yourself here.")
+    print("You pull out the ingredients you collected throughout the dungeon crawl.")
+    print(f"Carefully to your dish, you add: {', '.join(inventory)}")
+    print("The smell is promising!")
+    print("You take a tenatative bite.")
+    print("It's slightly salty, grounded with an earthy taste.")
+    print("The meat is soft and rich.")
+    print("The sauce is thick but not overly so.")
+    print("It's absolutely delicious.")
+    print("The rock monsters all nod at each other in agreement.")
+    print("There's nothing like a good meal.")
+    outro()
+    
+def outro():
+    print("Thank you for playing Boss Feast!")
+    return
 
         
 # Lets players play again from the beginning   
